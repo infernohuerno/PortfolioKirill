@@ -199,30 +199,6 @@
       padding: 40px 0 100px;
     }
 
-    .filter-bar {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      color: var(--muted);
-      padding: 8px 20px;
-      border-radius: 100px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .filter-btn.active, .filter-btn:hover {
-      color: var(--text);
-      border-color: rgba(255, 255, 255, 0.3);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
     .cases-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -792,14 +768,6 @@
   <!-- CASES OVERVIEW GRID -->
   <section class="cases-overview" id="work">
     <div class="container">
-      
-      <div class="filter-bar">
-        <button class="filter-btn active" onclick="filterCases('all')" data-i18n="filter_all">Все работы</button>
-        <button class="filter-btn" onclick="filterCases('branding')" data-i18n="filter_branding">Брендинг</button>
-        <button class="filter-btn" onclick="filterCases('web')" data-i18n="filter_web">Веб & UI/UX</button>
-        <button class="filter-btn" onclick="filterCases('apparel')" data-i18n="filter_apparel">Мерч & Одежда</button>
-      </div>
-
       <div class="cases-grid" id="cases-grid">
         <!-- JS Dynamic Cases Grid -->
       </div>
@@ -980,11 +948,9 @@
           <p class="case-detail-subtitle" data-i18n="c4_subtitle">Рост заказов мастеров на +35% и увеличение общей посещаемости салона на +50% через дизайн лукбуков и маркетинг.</p>
           
           <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
-            <!-- ССЫЛКА НА САЙТ ТИЛЬДА С ПРИМЕЧАНИЕМ -->
             <a href="http://inferno-paralyzed.ru.tilda.ws/" target="_blank" rel="noopener" class="case-site-link">
               <span data-i18n="link_charlies_site">Перейти на сайт (контент внизу страницы) ↗</span>
             </a>
-            <!-- ССЫЛКА НА ВКОНТАКТЕ -->
             <a href="https://vk.ru/mr.charlies" target="_blank" rel="noopener" class="case-site-link" style="background: rgba(255, 255, 255, 0.02);">
               <span data-i18n="link_visit_vk">Группа ВКонтакте ↗</span>
             </a>
@@ -1105,13 +1071,12 @@
     </div>
   </section>
 
-  <!-- ABOUT & SKILLS SECTION С УСТАНОВЛЕННОЙ АВАТАРКОЙ -->
+  <!-- ABOUT & SKILLS SECTION -->
   <section class="about-section" id="about">
     <div class="container">
       <div class="about-grid">
         
         <div class="avatar-wrapper">
-          <!-- ФОТОГРАФИЯ НА АВАТАРКЕ -->
           <img src="https://i.ibb.co/gbnTKJrn/photo-2026-08-12-19-15-56.jpg" alt="Катин Кирилл" class="avatar-img">
         </div>
 
@@ -1163,7 +1128,6 @@
       {
         id: 'nikifilini',
         targetId: 'case-nikifilini',
-        category: 'web',
         bgImage: 'https://i.ibb.co/MDQycCHP/1-12.jpg',
         title: 'NIKIFILINI',
         tags: ['ROSTIC\'S Collab', 'E-Commerce', 'AI Design', 'OTHERS & SOMBRA'],
@@ -1177,7 +1141,6 @@
       {
         id: 'inferno',
         targetId: 'case-inferno',
-        category: 'branding',
         bgImage: 'https://i.ibb.co/ccjq1QxP/1adsads.jpg',
         title: 'INFERNO',
         tags: ['Visual Identity', '3D Graphics', 'Apparel'],
@@ -1191,7 +1154,6 @@
       {
         id: 'otserdca',
         targetId: 'case-otserdca',
-        category: 'apparel',
         bgImage: 'https://i.ibb.co/F4PC39jx/Slide-16-9-27asd.png',
         title: 'OTSERDCA',
         tags: ['Product Branding', 'Packaging', 'Merch'],
@@ -1205,7 +1167,6 @@
       {
         id: 'charlies',
         targetId: 'case-charlies',
-        category: 'branding',
         bgImage: 'https://i.ibb.co/ccmRnQcd/Frze7hd-Ltp-Ft9-Di-Vx-HCj6k-DKgn-RDBr-XDAau-Pm-MTq-WZJ0-CBSj-Iq-ZTtnta-Do-ERYRB2-SQ1qo5-P0-Wpu-N1-GXc-Hjc.jpg',
         title: 'CHARLIES BARBERSHOP & TATTOO',
         tags: ['Lead Design', 'Spatial', 'Marketing', 'Apparel'],
@@ -1229,10 +1190,6 @@
         hero_status: '23 года • 5 лет опыта • Готов к переезду',
         hero_desc: 'Разрабатываю продуктовый брендинг, e-commerce UI/UX, дизайн одежды и генеративный ИИ-контент с доказанной эффективностью (до +1000% оптимизации процессов и +100% выручки).',
         hero_cta: 'Смотреть проекты ↓',
-        filter_all: 'Все работы',
-        filter_branding: 'Брендинг',
-        filter_web: 'Веб & UI/UX',
-        filter_apparel: 'Мерч & Одежда',
         meta_role: 'Роль',
         meta_scope: 'Результат / Задачи',
         meta_style: 'Стиль',
@@ -1295,10 +1252,6 @@
         hero_status: '23 y.o. • 5 Yrs Experience • Ready to Relocate',
         hero_desc: 'Crafting product branding, e-commerce UI/UX, apparel design, and generative AI content with proven ROI (up to 1000% process cost reduction & +100% revenue growth).',
         hero_cta: 'Explore Projects ↓',
-        filter_all: 'All Works',
-        filter_branding: 'Branding',
-        filter_web: 'Web & UI/UX',
-        filter_apparel: 'Apparel & Merch',
         meta_role: 'Role',
         meta_scope: 'Outcome / Scope',
         meta_style: 'Style',
@@ -1354,7 +1307,6 @@
     };
 
     let currentLang = 'ru';
-    let currentFilter = 'all';
 
     function setLanguage(lang) {
       currentLang = lang;
@@ -1376,9 +1328,7 @@
       const grid = document.getElementById('cases-grid');
       grid.innerHTML = '';
 
-      const filtered = casesData.filter(c => currentFilter === 'all' || c.category === currentFilter);
-
-      filtered.forEach(item => {
+      casesData.forEach(item => {
         const langData = item[currentLang];
         const card = document.createElement('a');
         card.className = 'case-card';
@@ -1399,13 +1349,6 @@
 
         grid.appendChild(card);
       });
-    }
-
-    function filterCases(category) {
-      currentFilter = category;
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-      renderCases();
     }
 
     renderCases();
