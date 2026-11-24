@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0c0c0c">
+  <title>Kirill Katin — INFERNO / Design Portfolio</title>
+  <meta name="description" content="Кирилл Катин. 5 лет в бренд-, продуктовом и AI-дизайне. Избранные проекты для NIKIFILINI, INFERNO, OTSERDCA и Charlie’s.">
+  <meta property="og:title" content="Kirill Katin — INFERNO / Design Portfolio">
+  <meta property="og:description" content="Brand. Digital. AI. Избранные работы Кирилла Катина.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://kirill-katin-design.megaaxe2015.chatgpt.site/images/mascot.webp">
+  <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
+  <link rel="preload" href="fonts/Oswald.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="arcade.css">
+  <script src="app.js" defer></script>
+  <script src="mascot-shape.js" defer></script>
+  <script src="stars.js" defer></script>
+  <script src="particles.js" defer></script>
+  <script src="retro.js" defer></script>
+  <script src="arcade-core.js" defer></script>
+  <script src="arcade.js" defer></script>
+</head>
+<body>
+  <div class="arcade-stage" id="arcade-stage" tabindex="-1" role="application" aria-label="PIXEL PATROL" aria-describedby="arcade-controls" aria-hidden="true" hidden><canvas id="arcade-canvas" aria-hidden="true"></canvas></div>
+  <aside class="arcade-hud" aria-label="PIXEL PATROL" hidden>
+    <div class="arcade-titlebar"><span>PIXEL_PATROL.EXE</span><button class="scanlines-toggle" type="button" aria-pressed="false">CRT</button></div>
+    <div class="arcade-scores"><div><span id="arcade-score-label">ОЧКИ</span><strong id="arcade-score">00000</strong></div><div><span id="arcade-best-label">РЕКОРД</span><strong id="arcade-best">00000</strong></div><div><span id="arcade-lives-label">ЖИЗНИ</span><strong id="arcade-lives">3</strong></div><div><span id="arcade-wave-label">ВОЛНА</span><strong id="arcade-wave">01</strong></div></div>
+    <p id="arcade-controls">← → / A D — движение · пробел / клик — огонь · P — пауза · Esc — портфолио</p>
+  </aside>
+  <div class="arcade-prompt" hidden><div class="arcade-titlebar">PIXEL_PATROL.EXE</div><h2 id="arcade-message">ПАУЗА</h2><p id="arcade-prompt-text"></p><button id="arcade-resume" type="button">Продолжить</button></div>
+  <div class="arcade-dock" role="group" aria-label="PIXEL PATROL" hidden><button id="arcade-start" type="button"><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2 0h1v1H2zm3 0h1v1H5zM3 1h2v1H3zM2 2h4v1H2zM1 3h6v1H1zM0 4h2v1H0zm3 0h2v1H3zm3 0h2v1H6zM0 5h8v1H0zM0 6h1v1H0zm2 0h1v1H2zm3 0h1v1H5zm2 0h1v1H7zM2 7h1v1H2zm3 0h1v1H5z"/></svg><span id="arcade-start-text">Играть на фоне</span></button><span class="arcade-file" id="arcade-idle-best">HI 00000</span><button id="arcade-pause" type="button" hidden>Пауза</button><button id="arcade-back" type="button" hidden>Вернуть портфолио</button></div>
+  <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v18m-7-7 7 7 7-7"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></symbol>
+    <symbol id="i-brand" viewBox="0 0 24 24"><path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z"/></symbol>
+    <symbol id="i-digital" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8m-4-4v4M3 7h18"/></symbol>
+    <symbol id="i-ai" viewBox="0 0 24 24"><path d="m10 3 2.5 6.5L19 12l-6.5 2.5L10 21l-2.5-6.5L1 12l6.5-2.5ZM19 2v6m-3-3h6m-2 12v5m-2.5-2.5h5"/></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M21 3 3 10l7 3 3 7 8-17ZM10 13l11-10M10 13v6l3-3"/></symbol>
+    <symbol id="i-behance" viewBox="0 0 24 24"><path d="M3 5h5a3.5 3.5 0 0 1 0 7H3Zm0 7h5a3.5 3.5 0 0 1 0 7H3Zm13-6h6m-6 9h6c0-6-9-6-9 0 0 5 7 5 9 2"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M4 9v12M4 3v1m6 17V9m0 5c0-7 10-7 10 0v7"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 32 32"><path d="M2 7h11l3 4h14v16H2Z" fill="#fff34b" stroke="#15102d" stroke-width="2"/><path d="M2 15h28v12H2Z" fill="#ffbf00" stroke="#15102d" stroke-width="2"/><path d="M5 18h22" stroke="#fff8af" stroke-width="2"/></symbol>
+    <symbol id="i-photo" viewBox="0 0 24 24"><path d="M3 3h18v18H3Z"/><path d="m3 17 5-6 5 5 4-4 4 5M15 7h2v2h-2Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 8h18M3 16h18"/></symbol>
+  </defs></svg>
+  <a class="skip-link" href="#work" data-i18n="skip">К работам</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="desktop-shell">
+  <canvas class="particle-field" aria-hidden="true"></canvas>
+  <div class="star-world" aria-hidden="true"><canvas></canvas></div>
+  <header class="header wrap">
+    <a class="wordmark" href="#top" aria-label="Kirill Katin / INFERNO"><img src="icons/inferno.svg" alt="INFERNO" width="118" height="18"><span>KIRILL KATIN</span></a>
+    <nav class="desktop-nav" aria-label="Навигация"><a href="#drop">INFERNO</a><a href="#work" data-i18n="navWork">Работы</a><a href="#about" data-i18n="navAbout">Обо мне</a></nav>
+    <div class="header-actions"><div class="languages" aria-label="Language"><button class="lang active" data-lang="ru" aria-pressed="true">RU</button><span>/</span><button class="lang" data-lang="en" aria-pressed="false">EN</button></div><a class="header-contact" href="#contact" data-i18n="talk">Обсудить проект</a><button type="button" class="menu-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-nav"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button></div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Навигация" hidden><a href="#drop">INFERNO</a><a href="#work" data-i18n="navWork">Работы</a><a href="#about" data-i18n="navAbout">Обо мне</a><a href="#experience" data-i18n="navExp">Опыт</a><a href="#contact" data-i18n="navContact">Контакты</a></nav>
+  </header>
+  <main>
+    <section class="hero wrap" id="top" aria-labelledby="hero-name">
+      <div class="hero-copy">
+        <h1 id="hero-name"><span>KIRILL</span><span>KATIN<span class="name-dot">.</span></span></h1>
+        <p class="hero-lead" data-i18n="heroIntro">Создаю айдентику, одежду и цифровые проекты.</p>
+        <div class="hero-actions"><a class="primary" href="#work" data-i18n="explore">Смотреть работы</a><a class="quiet-link" href="archive.html" data-i18n="exploreDrop">История INFERNO</a></div>
+      </div>
+      <figure class="sculpture" aria-label="INFERNO">
+        <img class="mascot-poster" src="images/mascot.webp" alt="Жёлтая звезда INFERNO с улыбкой и розовым языком" width="988" height="988" fetchpriority="high">
+        <figcaption><span>INFERNO <i>/</i> MASCOT</span><button class="star-launch" type="button" data-i18n="kickStar" hidden>Подбросить звезду</button><button class="motion-control" type="button" hidden>Пауза моушна</button></figcaption>
+      </figure>
+    </section>
+    <div class="discipline-bar" aria-hidden="true"><div><span>Brand Identity</span><b>✳</b><span>Art Direction</span><b>✳</b><span>Digital Design</span><b>✳</b><span>AI &amp; Motion</span></div></div>
+    <section class="drop-section" id="drop" aria-labelledby="drop-title"><div class="wrap">
+      <div class="section-top"><span class="eyebrow" data-i18n="dropLabel">Авторский проект</span><span class="eyebrow">INFERNO PARALYZED</span></div>
+      <div class="drop-layout">
+        <div class="drop-copy"><h2 id="drop-title"><img src="icons/inferno.svg" alt="INFERNO" width="1598" height="240"></h2>
+        <p class="drop-sub" data-i18n="dropHead">Первая капсула</p>
+        <p data-i18n="dropStory">Лонгслив и oversize-футболка. Я разработал графику, собрал прототипы в Marvelous Designer и запустил первый дроп без рекламного бюджета.</p>
+        <div class="drop-result"><strong>20/20</strong><span data-i18n="dropStat">вещей продано<br>за 14 дней</span></div>
+        <a class="ink-button" href="archive.html" data-i18n="dropView">Читать историю дропа</a></div>
+        <div class="drop-plates"><figure class="plate-main"><img src="images/inferno-gallery-2.webp" alt="Звезда на спине футболки INFERNO" width="700" height="1000" loading="lazy"><figcaption><span>INFERNO</span><span>OVERSIZE TEE</span></figcaption></figure><figure class="plate-small"><img src="images/inferno-longsleeve.webp" alt="Чёрный лонгслив из первого дропа" width="1680" height="1680" loading="lazy"><figcaption>LONGSLEEVE</figcaption></figure></div>
+      </div>
+    </div></section>
+    <section class="work-section wrap" id="work">
+      <div class="section-top reveal"><span class="micro"><span data-i18n="selected">ПОРТФОЛИО</span></span><span class="micro">2021 — 2026</span></div>
+      <div class="work-heading reveal"><h2 data-i18n="workHeading">Избранные работы</h2><div class="filters" role="group" aria-label="Фильтры работ"><button class="filter active" data-filter="all" aria-pressed="true" data-i18n="all">Все</button><button class="filter" data-filter="brand" aria-pressed="false">Branding</button><button class="filter" data-filter="digital" aria-pressed="false">Digital & AI</button></div></div>
+      <div class="work-deck" role="region" aria-label="Галерея проектов">
+        <div class="deck-stage" id="project-grid"></div>
+        <div class="deck-footer">
+          <div class="deck-caption"><p class="project-description"></p><div class="project-tags"></div></div>
+          <nav class="deck-controls" aria-label="Перелистывание работ">
+            <button type="button" class="deck-prev" data-i18n="deckPrev">Назад</button>
+            <span class="deck-count" aria-live="polite" aria-atomic="true"></span>
+            <button type="button" class="deck-next" data-i18n="deckNext">Далее</button>
+          </nav>
+        </div>
+      </div>
+      <nav class="archive-shortcuts" aria-label="Архив"><span data-i18n="moreSeries">Ещё из архива</span><a href="archive.html#nocta">Nocta</a><a href="archive.html#charlies">Charlie’s Tattoo &amp; Barber Shop</a></nav>
+      <noscript><p>Включите JavaScript для просмотра кейсов и галерей. Проекты: <a href="https://nikifilini.com/product-category/rostic-s/">NIKIFILINI</a> / <a href="https://inferno-paralyzed.tilda.ws/">INFERNO</a> / <a href="https://otserdca.com/">OTSERDCA</a> / <a href="https://vk.ru/mr.charlies">Charlie’s</a>.</p></noscript>
+    </section>
+    <section class="impact wrap" aria-label="Результаты проектов"><div class="impact-intro reveal"><span class="micro" data-i18n="impactLabel">РЕЗУЛЬТАТЫ ПРОЕКТОВ</span><h2 data-i18n="impactTitle">Дизайн в цифрах</h2><p data-i18n="impactNote">Результаты проектов NIKIFILINI, OTHERS / SOMBRA и Charlie’s из моего опыта.</p></div><div class="impact-stats reveal"><div><span class="stat">+60<span>%</span></span><p data-i18n="stat1">к конверсии OTHERS / SOMBRA<br>после внедрения AI-фотосессий</p></div><div><span class="stat">+150<span>%</span></span><p data-i18n="stat2">к скорости добавления коллекций<br>в NIKIFILINI</p></div><div><span class="stat">+50<span>%</span></span><p data-i18n="stat3">к посещаемости Charlie’s<br>после запуска фирменного лукбука</p></div></div></section>
+    <section class="about-section" id="about"><div class="wrap"><div class="section-top reveal"><span class="micro"><span data-i18n="aboutLabel">О ДИЗАЙНЕРЕ</span></span><svg aria-hidden="true" class="icon"><use href="#i-brand"/></svg></div><div class="about-grid"><div class="about-portrait reveal"><img src="images/avatar.webp" alt="Кирилл Катин" width="1280" height="1280" loading="lazy"><div class="portrait-caption"><span>KIRILL KATIN</span><span data-i18n="portrait">ДИЗАЙНЕР / 23 ГОДА</span></div></div><div class="about-copy reveal"><h2 data-i18n="aboutHeading">Кирилл Катин</h2><p class="about-lead" data-i18n="aboutLead">Мне интересно, что делает бренд собой. Нахожу этот характер и превращаю его в айдентику, продукт и цифровой опыт.</p><p data-i18n="aboutText">За 5 лет работал с одеждой, e-commerce и сервисными брендами. Разрабатываю визуальные системы, создаю контент с помощью AI и помогаю командам встроить новые инструменты в работу.</p><div class="about-meta"><span class="status-dot"></span><span data-i18n="relocate">Готов к переезду и командировкам</span></div><a class="text-link" href="https://t.me/infernodesign" target="_blank" rel="noopener"><span data-i18n="meet">Давайте знакомиться</span><svg aria-hidden="true" class="icon"><use href="#i-arrow"/></svg></a></div></div>
+      <div class="services"><article class="service reveal"><svg aria-hidden="true" class="service-icon"><use href="#i-brand"/></svg><div><span class="micro">BRANDING</span><h3 data-i18n="s1">Айдентика бренда</h3><p data-i18n="s1text">Айдентика, арт-дирекшн, упаковка, одежда и мерч. От идеи до цельной визуальной системы.</p></div></article><article class="service reveal"><svg aria-hidden="true" class="service-icon"><use href="#i-digital"/></svg><div><span class="micro">DIGITAL</span><h3 data-i18n="s2">Цифровой опыт</h3><p data-i18n="s2text">UI/UX, e-commerce и веб-дизайн. Понятная структура, выразительная подача и внимание к деталям.</p></div></article><article class="service reveal"><svg aria-hidden="true" class="service-icon"><use href="#i-ai"/></svg><div><span class="micro">AI</span><h3 data-i18n="s3">AI-продакшн</h3><p data-i18n="s3text">AI-фотосессии, лукбуки и контент для маркетплейсов. Внедрение инструментов и обучение команд.</p></div></article></div>
+      <div class="toolkit reveal"><span class="micro">MY TOOLKIT</span><div><span>Figma</span><span>Photoshop</span><span>Illustrator</span><span>After Effects</span><span>Generative AI</span><span>Motion Design</span><span>HTML / CSS</span></div></div>
+    </div></section>
+    <section class="experience-section wrap" id="experience"><div class="section-top reveal"><span class="micro"><span data-i18n="expLabel">ПРОФЕССИОНАЛЬНЫЙ ПУТЬ</span></span><span class="micro" data-i18n="expYears">5 ЛЕТ ОПЫТА</span></div><div class="experience-heading reveal"><h2 data-i18n="expHeading">Опыт работы</h2><p data-i18n="expIntro">От первых визуальных коммуникаций — до брендинга с нуля и внедрения AI в команды.</p></div><div class="experience-list" id="experience-list"></div></section>
+    <section class="contact-section" id="contact"><div class="wrap"><div class="section-top"><span class="micro"><span data-i18n="contactLabel">КОНТАКТЫ</span></span><span class="availability"><span class="status-dot"></span><span data-i18n="available">Открыт к предложениям</span></span></div><a class="contact-headline" href="https://t.me/infernodesign" target="_blank" rel="noopener"><h2 data-i18n="contactHeading">Есть идея?</h2><span class="contact-star" aria-hidden="true">✳</span></a><div class="contact-bottom"><p data-i18n="contactText">Ищу команду и проекты, где ценят<br>сильные идеи и смелый дизайн.</p><div class="email-block"><span class="micro" data-i18n="write">НАПИШИТЕ МНЕ</span><div><a href="mailto:infernoggc@yandex.ru">infernoggc@yandex.ru</a><button class="copy-email" aria-label="Скопировать email"><svg aria-hidden="true" class="icon"><use href="#i-copy"/></svg></button></div><span class="copy-status" role="status" aria-live="polite"></span></div><div class="social-links"><a href="https://t.me/infernodesign" target="_blank" rel="noopener"><svg aria-hidden="true" class="icon"><use href="#i-telegram"/></svg>Telegram<svg aria-hidden="true" class="icon small"><use href="#i-arrow"/></svg></a><a href="https://www.behance.net/lemonacepalec" target="_blank" rel="noopener"><svg aria-hidden="true" class="icon"><use href="#i-behance"/></svg>Behance<svg aria-hidden="true" class="icon small"><use href="#i-arrow"/></svg></a><a href="https://www.linkedin.com/in/kirill-katin-ba4b74342" target="_blank" rel="noopener"><svg aria-hidden="true" class="icon"><use href="#i-linkedin"/></svg>LinkedIn<svg aria-hidden="true" class="icon small"><use href="#i-arrow"/></svg></a></div></div><footer><span class="micro">© <span id="year">2026</span> KIRILL KATIN</span><a class="footer-project" href="#drop">INFERNO PARALYZED</a><a href="#top"><span data-i18n="back">Наверх</span><svg aria-hidden="true" class="icon"><use href="#i-arrow"/></svg></a></footer></div></section>
+  </main>
+
+  </div>
+  <dialog class="case-dialog" aria-labelledby="case-title"><div class="case-nav"><span class="micro">KIRILL KATIN / PORTFOLIO</span><button class="case-close"><span data-i18n="close">Закрыть</span><svg aria-hidden="true" class="icon"><use href="#i-close"/></svg></button></div><div id="case-content"></div></dialog>
+  <dialog class="lightbox" aria-label="Просмотр изображения"><div class="lightbox-header"><span class="lightbox-caption micro"></span><button class="lightbox-close" aria-label="Закрыть изображение"><svg aria-hidden="true" class="icon"><use href="#i-close"/></svg></button></div><div class="lightbox-stage"><button class="lightbox-prev" aria-label="Предыдущее изображение"><svg aria-hidden="true" class="icon"><use href="#i-down"/></svg></button><img alt=""><button class="lightbox-next" aria-label="Следующее изображение"><svg aria-hidden="true" class="icon"><use href="#i-down"/></svg></button></div><p class="lightbox-count micro"></p></dialog>
+</body>
+</html>

@@ -1,0 +1,67 @@
+.archive-page { background:#151515; color:#f4f3ec }
+.ar-wrap { width:min(100%,1500px); margin-inline:auto; padding-inline:var(--gutter) }
+.ar-mast,.ar-home,.ar-author,.viewer-toolbar,.viewer-foot,.ar-end { display:flex; align-items:center; gap:18px }
+.ar-mast { min-height:69px; justify-content:space-between; border-bottom:1px solid #525252 }
+.ar-home img { width:104px; height:auto }.ar-home span { border-left:1px solid #686868; padding-left:16px; font-size:.9rem }
+.ar-languages { font: .9rem var(--mono) }.ar-languages button { padding:8px 4px;color:#aaa }.ar-languages [aria-pressed=true] { color:white;text-decoration:underline;text-underline-offset:4px }
+.ar-cover { display:grid;grid-template-columns:1fr 1fr; gap:clamp(24px,6vw,92px);align-items:center;padding-block:clamp(32px,5vw,85px) }
+.ar-kicker { font: .83rem/1.5 var(--mono);letter-spacing:.065em;text-transform:uppercase }
+.ar-head h1,.ar-section h2,.ar-section h3 { font-family:var(--display);font-weight:550;letter-spacing:-.043em;line-height:1.04 }
+.ar-head h1 { font-size:clamp(4rem,8vw,9rem);margin:14px 0 23px;text-wrap:balance }
+.ar-head>p:not(.ar-kicker),.ar-section p:not(.ar-kicker) { max-width:67ch;line-height:1.65;text-wrap:pretty }
+.ar-head>p:not(.ar-kicker) { color:#d5d4ce }
+.ar-author { margin-top:24px }.ar-author small { display:block;color:#b6b5b1 }.ar-author .avatar { width:54px }
+.ar-sky { position:relative; isolation:isolate; overflow:hidden; background:#344a77 }
+.ar-figure { min-width:0 }.ar-zoom { position:relative; display:block; background:#232323 }
+.ar-zoom img { width:100%;height:auto;display:block }
+.ar-sky .clouds img { aspect-ratio:1.32;object-fit:cover }
+.ar-sky .cloud-logo { position:absolute;bottom:15%;left:10%;width:80%; filter:drop-shadow(0 1px 5px #0005) }
+.cloud-logo a,.avatar a,.word-art a,.nocta-mark a { background:transparent }
+.film-badge { position:absolute;top:8px;left:8px;color:white;background:#141414e8;padding:4px 8px;font:.74rem/1.1 var(--mono) }
+.archive-nav { position:sticky;top:0;z-index:5;background:#151515f5;border-block:1px solid #555 }
+.archive-nav>div { display:flex;align-items:center;gap:clamp(16px,2.4vw,36px);overflow:auto;scrollbar-width:thin }
+.archive-nav a { flex:none;display:block;padding:13px 0;font-size:.92rem }
+.archive-nav a:hover,.ar-home:hover span,.ar-end a:hover { text-decoration:underline;text-underline-offset:4px }
+.ar-section { padding-block:clamp(42px,6vw,92px);border-bottom:1px solid #505050;scroll-margin-top:44px }
+.ar-section.light { background:#e9e9df;color:#161616 }
+.ar-section h2 { font-size:clamp(3rem,5.7vw,6.6rem);max-width:15ch;margin:12px 0 25px;text-wrap:balance }
+.ar-section h3 { font-size:clamp(1.75rem,2.8vw,3rem);margin:0 0 14px;max-width:25ch }
+.ar-section .ar-gallery+h3,.ar-section .ar-source+h3,.ar-section .ar-metrics+h3 { margin-top:clamp(32px,4.6vw,70px) }
+.ar-columns { display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,75px);margin-top:22px }
+.ar-gallery { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 14px;margin-top:24px }
+.ar-gallery.pair-grid,.ar-gallery.identity-grid { grid-template-columns:repeat(2,minmax(0,1fr)) }
+.ar-gallery.reference-grid { grid-template-columns:repeat(4,minmax(0,1fr)) }
+.ar-gallery .ar-zoom { background:#242424;padding:8px }
+.ar-gallery img { aspect-ratio:1.22;object-fit:contain;transition:opacity .15s }
+.ar-gallery .ar-zoom:hover img { opacity:.88 }
+.ar-figure figcaption { margin-top:7px;line-height:1.45;font-size:.84rem;color:#c2c2bf }
+.ar-gallery [data-art="r03-03"] .ar-zoom { background:#e7e7e3 }
+.word-art { width:fit-content;max-width:45%; margin-bottom:22px }.word-art img { width:auto;max-width:100%;height:45px;object-fit:contain;object-position:left }
+.identity-grid .ar-zoom { padding:9% }.identity-grid img { aspect-ratio:3;object-fit:contain }
+.personas { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:19px;margin-top:36px }
+.personas h3 { font-size:clamp(1.5rem,2.25vw,2.7rem);margin:14px 0 8px }
+.personas .persona-image img { aspect-ratio:1.55;object-fit:cover }
+.ar-metrics { display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:24px }
+.ar-metrics div { border-top:1px solid #666;padding-top:12px }.ar-metrics strong { display:block;font:550 clamp(3rem,6.3vw,7.2rem)/1.1 var(--display);letter-spacing:-.055em }
+.author-note .primary { margin-top:22px }
+.nocta { background:#4d2c37 }.nocta .ar-gallery .ar-zoom { background:#332129 }
+.nocta .nocta-mark { width:clamp(130px,18vw,220px);margin-block:18px }
+.nocta .reference-grid img { aspect-ratio: .75 }
+.ar-source { display:inline-block; margin-top:19px; text-decoration:underline; text-underline-offset:5px }
+.ar-end { background:#141414;justify-content:space-between;flex-wrap:wrap;padding-block:28px }
+.ar-viewer { position:fixed;background:#171717;color:#fff;padding:0;border:1px solid #767676;width:min(1440px,calc(100% - 24px));height:calc(100dvh - 24px);max-width:none;max-height:none;margin:auto }
+.ar-viewer[open] { display:grid;grid-template-rows:auto minmax(0,1fr) auto }
+.ar-viewer::backdrop { background:#000c }.viewer-toolbar,.viewer-foot { padding:10px 16px;justify-content:space-between;gap:12px }
+.viewer-toolbar { border-bottom:1px solid #666 }.viewer-foot { border-top:1px solid #666 }
+.viewer-image { width:100%;height:100%;object-fit:contain;min-height:0 }.viewer-image.paper { background:#deded9 }
+.viewer-close,.viewer-prev,.viewer-next,.viewer-play { min-height:40px;padding:4px 10px;border:1px solid #6f6f6f;flex:none }
+.viewer-count { font: .9rem var(--mono) }.viewer-caption { text-wrap:pretty;font-size:.92rem }
+@media(max-width:760px) {
+  .ar-cover,.ar-columns { grid-template-columns:1fr }.ar-sky { max-height:330px }.ar-sky .clouds img { aspect-ratio:1.95 }
+  .ar-gallery,.ar-gallery.reference-grid,.personas { grid-template-columns:repeat(2,minmax(0,1fr)) }
+  .ar-gallery { gap:16px 9px }.ar-section h2 { margin-bottom:18px }.ar-metrics { gap:10px }.ar-metrics strong { font-size:2.6rem }
+  .ar-metrics div span { font-size:.84rem }.ar-author { margin-top:17px }
+  .archive-nav a { font-size:.85rem }.ar-home { gap:10px }.ar-home img { width:85px }.ar-home span { padding-left:10px }
+  .ar-viewer { width:100%;height:100dvh }.viewer-toolbar,.viewer-foot { padding:8px;gap:5px }
+}
+@media(max-width:420px) { .personas { grid-template-columns:1fr }.personas article { border-top:1px solid #444;padding-top:15px }.personas .ar-figure { max-width:210px } }
